@@ -4,52 +4,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newsletter sign-up form with success message</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Newsletter Sign-Up Form</title>
   </head>
   <body>
     <main class="main">
       <div class="sign-up-form">
-        <h1>Stay updated!</h1>
-        <p>Join 60,000+ product managers receiving monthly updates on:</p>
-        <ul>
-          <li>
-            <img src="./images/tick.png" alt="check" />
-            Product discovery and building what matters
-          </li>
-          <li>
-            <img src="./images/tick.png" alt="check" />
-            Measuring to ensure updates are a success
-          </li>
-          <li>
-            <img src="./images/tick.png" alt="check" />
-            And much more!
-          </li>
-        </ul>
-        <form id="signup-form">
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <em class="error">Valid email required.</em>
-          </div>
-          <input type="text" id="email" placeholder="email@company.com" />
-          <button class="sub-btn">Subscribe to monthly newsletter</button>
-        </form>
-      </div>
-      <div class="illustration">
-        <img src="./images/pic.png" alt="Illustration" />
+        <div class="text-container">
+          <h1>Stay updated!</h1>
+          <p>Join 60,000+ product managers receiving monthly updates on:</p>
+          <ul>
+            <li>
+              <img src="./images/tick.png" alt="tick" /> Product discovery and
+              building what matters
+            </li>
+            <li>
+              <img src="./images/tick.png" alt="tick" /> Measuring to ensure
+              updates are a success
+            </li>
+            <li><img src="./images/tick.png" alt="tick" /> And much more!</li>
+          </ul>
+          <form id="signup-form" novalidate>
+            <div class="input-group">
+              <div class="labels">
+                <label for="email">Email Address</label>
+                <em class="error-msg">Valid email required.</em>
+              </div>
+              <input type="email" id="email" placeholder="email@company.com" />
+            </div>
+            <button class="sub-btn" type="submit">
+              Subscribe to monthly newsletter
+            </button>
+          </form>
+        </div>
+        <div class="image-container">
+          <img
+            src="./images/pic.png"
+            alt="Desktop Illustration"
+            class="desktop"
+          />
+          <img
+            src="./images/pic.png"
+            alt="Mobile Illustration"
+            class="mobile"
+          />
+        </div>
       </div>
     </main>
     <footer class="footer">
-      <p>
-        Challenge by <a href="https://crio.do">CrioDo</a>. Coded by
-        <a href="#">Akash KT</a>.
-      </p>
+      Challenge by <a href="https://crio.do">Crio.Do</a>. Coded by
+      <a href="#">Akash KT</a>.
     </footer>
     <script src="./js/script.js"></script>
   </body>
