@@ -1,48 +1,44 @@
+// script.js
 document.addEventListener("DOMContentLoaded", () => {
-  /* ---------- INDEX.HTML ---------- */
-  const form = document.getElementById("subscription-form");
-  if (form) {
+  if (document.getElementById("signup-form")) {
+    const form = document.getElementById("signup-form");
     const emailInput = document.getElementById("email");
-    const errorMsg = document.querySelector(".error-message");
+    const errorEm = document.querySelector(".error");
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
       const email = emailInput.value.trim();
-      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-      // ---- INVALID ----
-      if (!valid) {
-        form.classList.add("error"); // trigger CSS
-        emailInput.focus();
-        return;
+      if (!isValidEmail(email)) {
+        errorEm.style.display = "block";
+        emailInput.style.borderColor = "rgb(255, 99, 71)";
+        emailInput.style.color = "rgb(255, 99, 71)";
+        emailInput.style.backgroundColor = "rgba(255, 99, 71, 0.15)"; // Softer bg for readability
+      } else {
+        errorEm.style.display = "none";
+        emailInput.style.borderColor = "";
+        emailInput.style.color = "";
+        emailInput.style.backgroundColor = "";
+        window.location.href = `success.html?email=${encodeURIComponent(
+          email
+        )}`;
       }
-
-      // ---- VALID ----
-      form.classList.remove("error");
-
-      // **Cypress-friendly navigation**
-      const url = `success.html?email=${encodeURIComponent(email)}`;
-      window.location.assign(url); // full navigation
     });
-
-    // remove error when user starts typing
-    emailInput.addEventListener("input", () => form.classList.remove("error"));
-  }
-
-  /* ---------- SUCCESS.HTML ---------- */
-  const userSpan = document.getElementById("user-email");
-  const dismissBtn = document.querySelector(".dismiss-btn");
-
-  if (userSpan) {
-    const params = new URLSearchParams(window.location.search);
-    const email = params.get("email");
-    if (email) userSpan.textContent = decodeURIComponent(email);
-  }
-
-  if (dismissBtn) {
+  } else if (document.querySelector(".success-card")) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get("email");
+    if (email) {
+      const strong = document.querySelector(".success-text strong");
+      strong.textContent = decodeURIComponent(email);
+    }
+    const dismissBtn = document.querySelector(".dismiss-btn");
     dismissBtn.addEventListener("click", () => {
-      window.location.assign("index.html"); // full navigation
+      window.location.href = "index.html";
     });
   }
 });
+
+function isValidEmail(email) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
