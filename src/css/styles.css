@@ -116,14 +116,14 @@ label {
   background-color: hsl(4, 100%, 67%);
 }
 
-/* Error state */
-.error #email {
+/* ---------- ERROR STATE ---------- */
+form.error #email {
   border-color: rgb(255, 99, 71);
   color: rgb(255, 99, 71);
   background-color: rgba(255, 99, 71, 0.6);
 }
 
-.error .error-message {
+form.error .error-message {
   display: block;
 }
 
